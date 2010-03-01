@@ -45,23 +45,15 @@ struct pulse_s gExtras[MAX_EXTRAS];
 
 int gNow;
 
-
 void setColor(int c) {
-    if (State->mode == 1) {
-        // sholes red
-        color(0.9f, 0.1f, 0.1f, 0.8f);
-    } else if (c == 0) {
-        // red
-        color(1.0f, 0.0f, 0.0f, 0.8f);
+    if (c == 0) {
+        color(State->color0r, State->color0g, State->color0b, 1.0f);
     } else if (c == 1) {
-        // green
-        color(0.0f, 0.8f, 0.0f, 0.8f);
+        color(State->color1r, State->color1g, State->color1b, 1.0f);
     } else if (c == 2) {
-        // blue
-        color(0.0f, 0.4f, 0.9f, 0.8f);
+        color(State->color2r, State->color2g, State->color2b, 1.0f);
     } else if (c == 3) {
-        // yellow
-        color(1.0f, 0.8f, 0.0f, 0.8f);
+        color(State->color3r, State->color3g, State->color3b, 1.0f);
     }
 }
 
