@@ -111,9 +111,9 @@ void initPulses() {
 void drawBackground(int width, int height) {
     bindProgramFragment(NAMED_PFTexture565);
     if (State->background == 0) {
-    	bindTexture(NAMED_PFTexture565, 0, NAMED_TBackground);
+        bindTexture(NAMED_PFTexture565, 0, NAMED_TBackground);
     } else {
-        bindTexture(NAMED_PFTexture565, 0, NAMED_TBackgroundDark);
+        bindTexture(NAMED_PTTexture565, 0, NAMED_TBackgroundDark);
     }
     color(1.0f, 1.0f, 1.0f, 1.0f);
     if (State->rotate) {
