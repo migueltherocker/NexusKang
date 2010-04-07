@@ -16,13 +16,12 @@
 
 package com.android.wallpaper;
 
-import android.service.wallpaper.WallpaperService;
 import android.os.Bundle;
 import android.renderscript.RenderScriptGL;
 import android.renderscript.RenderScript;
-import android.util.Log;
-import android.view.SurfaceHolder;
+import android.service.wallpaper.WallpaperService;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 
 public abstract class RenderScriptWallpaper<T extends RenderScriptScene> extends WallpaperService {
     public Engine onCreateEngine() {
@@ -61,7 +60,6 @@ public abstract class RenderScriptWallpaper<T extends RenderScriptScene> extends
 
         @Override
         public void onVisibilityChanged(boolean visible) {
-            Log.d("RSWallpaper", "onVisibilityChanged");
             super.onVisibilityChanged(visible);
             if (mRenderer != null) {
                 if (visible) {
@@ -75,7 +73,6 @@ public abstract class RenderScriptWallpaper<T extends RenderScriptScene> extends
 
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-            Log.d("RSWallpaper", "onSurfaceChanged");
             super.onSurfaceChanged(holder, format, width, height);
             if (mRs != null) {
                 mRs.contextSetSurface(width, height, holder.getSurface());
@@ -95,7 +92,6 @@ public abstract class RenderScriptWallpaper<T extends RenderScriptScene> extends
 
         private synchronized void initRendererIfDirty() {
             if (mRenderer != null && mRenderer.isDirty()) {
-                Log.d("RSWallpaper", "Scene is dirty, stopping");
                 mRenderer.stop();
                 mRenderer.setDirty(false);
                 mRenderer.init(mRs, getResources(), isPreview());
@@ -110,7 +106,6 @@ public abstract class RenderScriptWallpaper<T extends RenderScriptScene> extends
 
         @Override
         public void onSurfaceCreated(SurfaceHolder holder) {
-            Log.d("RSWallpaper", "onSurfaceCreated");
             super.onSurfaceCreated(holder);
 
             Surface surface = null;
