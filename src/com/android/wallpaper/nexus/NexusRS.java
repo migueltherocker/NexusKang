@@ -161,7 +161,7 @@ class NexusRS extends RenderScriptScene implements
     private Preset buildColors() {
         final Resources res = mContext.getResources();
 	String colors[] = new String[] {
-		mPrefs.getString("color0","#66CCDD"),
+	        mPrefs.getString("color0","#66CCDD"),
                 mPrefs.getString("color1","#3366AA"),
                 mPrefs.getString("color2","#6699AA"),
                 mPrefs.getString("color3","#AABBBB")
@@ -439,8 +439,7 @@ class NexusRS extends RenderScriptScene implements
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
-        if (key.equals("nexus_colorscheme")) {
+        if (key.startsWith("color") || key.equals("nexus_colorscheme")) {
             mPreset = buildColors();
             makeNewState();
             mState.data(mWorldState);
