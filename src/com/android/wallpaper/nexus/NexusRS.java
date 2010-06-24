@@ -416,7 +416,7 @@ class NexusRS extends RenderScriptScene implements
             int colorB = (int) (mPreset.color0b * 255.0);
                                    
             int colorValue = Color.rgb(colorR, colorG, colorB); 
-            
+            /*            
             try {
                 // flash the trackball on tap
                 hardware.pulseBreathingLightColor(colorValue); 
@@ -424,6 +424,7 @@ class NexusRS extends RenderScriptScene implements
             } catch (RemoteException re) {
                 Log.e("NexusLWP", "Could not preview LED color", re);
             }
+	    */
             sendCommand(1, x, y);
         } else if ("android.home.drop".equals(action)) {
             sendCommand(2, x, y);
