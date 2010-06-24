@@ -97,7 +97,7 @@ public abstract class RenderScriptWallpaper<T extends RenderScriptScene> extends
 
                 destroyRenderer();
 
-                mRs = new RenderScript(false, false);
+                mRs = new RenderScriptGL(false, false);
                 mRs.contextSetPriority(RenderScript.Priority.LOW);
 
                 mRs.contextSetSurface(width, height, mSurfaceHolder.getSurface());
