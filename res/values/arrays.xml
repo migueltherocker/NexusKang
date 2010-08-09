@@ -49,6 +49,7 @@
     <item>Sholes Red</item>
     <item>Soft Blues</item>
     <item>Mau5</item>
+    <item>Cotton Candy</item>
   </string-array>
   <string-array name="nexus_colorscheme_ids" translatable="false">
     <item>dust</item>
@@ -60,6 +61,7 @@
     <item>red</item>
     <item>softblues</item>
     <item>mau5</item>
+    <item>cottoncandy</item>
   </string-array>
   
   <string-array name="nexus_colorscheme_dust" translatable="false">
@@ -125,6 +127,13 @@
     <item>#AABBBB</item>
   </string-array>
 
+  <string-array name="nexus_colorscheme_cottoncandy" translatable="false"> 
+  	<item>#00F2FF</item>
+  	<item>#00F2FF</item>
+  	<item>#FF00EE</item>
+  	<item>#FF00EE</item>
+  </string-array>
+
   <string-array name="nexus_background_names" translatable="false">
     <item>Normal</item>
     <item>Dark</item>
@@ -132,6 +141,7 @@
     <item>Cyanogenmod</item> //added option for cyanogenmod
     <item>Blue Droid</item>// added jegoss's droid background
     <item>Dark Droid</item>
+    <item>Carbon Fiber</item> // added InsaneNemesis carbon fiber background
   </string-array>
 
   <string-array name="nexus_background_ids" translatable="false">
@@ -141,6 +151,7 @@
     <item>cyanogenmod</item> //added option for cyanogenmod
     <item>droid</item>//added jeagoss's droid background
     <item>dark_droid</item>
+    <item>carbonfiber</item> // added InsaneNemesis carbon fiber background
   </string-array>
 
 </resources>
