@@ -1,3 +1,3 @@
--keep class com.android.wallpaper.**$* {
+-keep class com.teamdouche.nexuskang.**$* {
   public <fields>;
 }

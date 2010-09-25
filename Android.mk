@@ -21,7 +21,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
 
-LOCAL_PACKAGE_NAME := LiveWallpapers
+LOCAL_PACKAGE_NAME := NexusKang
 LOCAL_CERTIFICATE := shared
 
 LOCAL_PROGUARD_FLAGS := -include $(LOCAL_PATH)/proguard.flags

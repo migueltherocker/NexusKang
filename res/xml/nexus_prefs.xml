@@ -31,5 +31,10 @@
             android:entries="@array/nexus_background_names"
             android:entryValues="@array/nexus_background_ids"
             />
+    <CheckBoxPreference 
+            android:key="custom_colors"
+            android:title="test1" 
+            android:summary="asdfsafd" />
+    
 
 </PreferenceScreen>
