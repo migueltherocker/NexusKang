@@ -31,26 +31,27 @@
             android:entries="@array/nexus_background_names"
             android:entryValues="@array/nexus_background_ids"
             />
-    <Preference 
+    <PreferenceCategory android:title="Custom Colors">
+        <Preference 
             android:key="custom_colors0"
             android:title="Color 1" 
             android:summary="Set the First Color" 
             android:defaultValue="-16777216" />
-    <Preference 
+        <Preference 
             android:key="custom_colors1"
             android:title="Color 2" 
             android:summary="Set the Second Color" 
             android:defaultValue="-16777216" />
-    <Preference 
+        <Preference 
             android:key="custom_colors2"
             android:title="Color 3" 
             android:summary="Set the Third Color" 
             android:defaultValue="-16777216" />
-    <Preference 
+        <Preference 
             android:key="custom_colors3"
             android:title="Color 4" 
             android:summary="Set the Fourth Color" 
             android:defaultValue="-16777216" />
+    </PreferenceCategory>
     
-
 </PreferenceScreen>
