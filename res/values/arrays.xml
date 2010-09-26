@@ -133,6 +133,12 @@
   	<item>#FF00EE</item>
   	<item>#FF00EE</item>
   </string-array>
+  <string-array name="custom_colors" translatable="false"> 
+  	<item>#000000</item>
+  	<item>#000000</item>
+  	<item>#000000</item>
+  	<item>#000000</item>
+  </string-array>
 
   <string-array name="nexus_background_names" translatable="false">
     <item>Normal</item>
