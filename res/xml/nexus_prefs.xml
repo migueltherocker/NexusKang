@@ -53,5 +53,9 @@
             android:summary="Set the Fourth Color" 
             android:defaultValue="-16777216" />
     </PreferenceCategory>
+     <com.teamdouche.nexuskang.SeekBarPreference  
+                android:key="laserSpeed"
+                android:defaultValue="20"
+                android:title="Laser Speed" />     
     
 </PreferenceScreen>

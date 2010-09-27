@@ -32,7 +32,7 @@ import android.util.Log;
 import java.lang.Integer;
 
 public class NexusSettings extends WallpaperSettingsActivity 
-	implements SharedPreferences.OnSharedPreferenceChangeListener {
+	implements SharedPreferences.OnSharedPreferenceChangeListener  {
 
 	public static final String COLORSCHEME_PREF = "nexus_colorscheme";
     public static final String CUSTOM_COLORS1 = "custom_colors1";
@@ -40,7 +40,8 @@ public class NexusSettings extends WallpaperSettingsActivity
 	private static final String COLOR1_PREF = "color1";
 	private static final String COLOR2_PREF = "color2";
 	private static final String COLOR3_PREF = "color3";
-
+    
+    @Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		getPreferenceManager().setSharedPreferencesName(
@@ -81,47 +82,48 @@ public class NexusSettings extends WallpaperSettingsActivity
     }
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference.getKey().equals("custom_colors0")) {
-            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR0_PREF, "333333"));
-            ColorPickerDialog cp = new ColorPickerDialog(this,mColor0Listener, i);
-            cp.show();
+            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR0_PREF, "#333333"));
+            new UberColorPickerDialog(this, mColor0Listener, i, false).show();
         }
         else if (preference.getKey().equals("custom_colors1")) {
-            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR1_PREF, "333333"));
-            ColorPickerDialog cp = new ColorPickerDialog(this,mColor1Listener, i);
-        	cp.show();
+            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR1_PREF, "#333333"));
+            new UberColorPickerDialog(this, mColor1Listener, i, false).show();
         }
         else if (preference.getKey().equals("custom_colors2")) {
-            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR2_PREF, "333333"));
-            ColorPickerDialog cp = new ColorPickerDialog(this,mColor2Listener, i);
-        	cp.show();
+            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR2_PREF, "#333333"));
+            new UberColorPickerDialog(this, mColor2Listener, i, false).show();
         }
         else if (preference.getKey().equals("custom_colors3")) {
-            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR3_PREF, "333333"));
-            ColorPickerDialog cp = new ColorPickerDialog(this,mColor3Listener, i);
-        	cp.show();
+            int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR3_PREF, "#333333"));
+            new UberColorPickerDialog(this, mColor3Listener, i, false).show();
         }
         return false;
 	}
-    ColorPickerDialog.OnColorChangedListener mColor0Listener =
-    	new ColorPickerDialog.OnColorChangedListener() {
+    UberColorPickerDialog.OnColorChangedListener mColor0Listener =
+    	new UberColorPickerDialog.OnColorChangedListener() {
+        @Override
     	public void colorChanged(int color) {
+            Log.d("LWP",getPreferenceManager().getSharedPreferences().getString(COLOR0_PREF, "fail"));
     		getPreferenceManager().getSharedPreferences().edit().putString(COLOR0_PREF, convertToRGB(color)).commit();
     	}
     };
-    ColorPickerDialog.OnColorChangedListener mColor1Listener =
-    	new ColorPickerDialog.OnColorChangedListener() {
+    UberColorPickerDialog.OnColorChangedListener mColor1Listener =
+    	new UberColorPickerDialog.OnColorChangedListener() {
+        @Override
     	public void colorChanged(int color) {
     		getPreferenceManager().getSharedPreferences().edit().putString(COLOR1_PREF, convertToRGB(color)).commit();
     	}
     };
-    ColorPickerDialog.OnColorChangedListener mColor2Listener =
-    	new ColorPickerDialog.OnColorChangedListener() {
+    UberColorPickerDialog.OnColorChangedListener mColor2Listener =
+    	new UberColorPickerDialog.OnColorChangedListener() {
+        @Override
     	public void colorChanged(int color) {
     		getPreferenceManager().getSharedPreferences().edit().putString(COLOR2_PREF, convertToRGB(color)).commit();
     	}
     };
-    ColorPickerDialog.OnColorChangedListener mColor3Listener =
-    	new ColorPickerDialog.OnColorChangedListener() {
+    UberColorPickerDialog.OnColorChangedListener mColor3Listener =
+    	new UberColorPickerDialog.OnColorChangedListener() {
+        @Override
     	public void colorChanged(int color) {
     		getPreferenceManager().getSharedPreferences().edit().putString(COLOR3_PREF, convertToRGB(color)).commit();
     	}

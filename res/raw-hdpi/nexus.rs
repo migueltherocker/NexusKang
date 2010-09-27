@@ -22,7 +22,7 @@
 #define HALF_PULSE_SIZE      7
 #define GLOW_SIZE            64 // Size of the leading glow in pixels
 #define HALF_GLOW_SIZE       32
-#define SPEED                0.2f // (200 / 1000) Pixels per ms
+//#define SPEED                0.8f // (200 / 1000) Pixels per ms
 #define SPEED_VARIANCE       0.3f
 #define PULSE_NORMAL         0
 #define PULSE_EXTRA          1
@@ -38,6 +38,7 @@ struct pulse_s {
     float dx;
     float dy;
     int active;
+    float SPEED;
 };
 struct pulse_s gPulses[MAX_PULSES];
 
@@ -130,12 +131,13 @@ void drawPulses(struct pulse_s * pulseSet, int setSize) {
     for (i=0; i<setSize; i++) {
     	struct pulse_s * p = &pulseSet[i];
 
+        float SPEED1 = State->speed;
  	    int delta = gNow - p->startTime;
 
     	if (p->active != 0 && delta >= 0) {
 
-	        float x = p->originX + (p->dx * SPEED * delta);
-	        float y = p->originY + (p->dy * SPEED * delta);
+	        float x = p->originX + (p->dx * SPEED1 * delta);
+	        float y = p->originY + (p->dy * SPEED1 * delta);
 
 	        matrixLoadIdentity(matrix);
 	        if (p->dx < 0) {

@@ -262,6 +262,8 @@ class NexusRS extends RenderScriptScene implements
         public float color3r, color3g, color3b;
 
         public int mode;
+        
+        public float speed;
     }
 
     static class CommandState {
@@ -277,6 +279,8 @@ class NexusRS extends RenderScriptScene implements
         mWorldState.height = mHeight;
         mWorldState.rotate = mWidth > mHeight ? 1 : 0;
         mWorldState.isPreview = isPreview() ? 1 : 0;
+
+        mWorldState.speed = .01f * mPrefs.getInt("laserSpeed",20);
 
         mWorldState.color0r = mPreset.color0r;
         mWorldState.color0g = mPreset.color0g;
@@ -440,12 +444,16 @@ class NexusRS extends RenderScriptScene implements
     }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.startsWith("color") || key.equals("nexus_colorscheme")) {
-            mPreset = buildColors();
-            makeNewState();
-            mState.data(mWorldState);
-        } else if (key.equals("nexus_background")) {
-            setDirty(true);
+        try {
+            if (!key.equals("nexus_background")) {
+                mPreset = buildColors();
+                makeNewState();
+                mState.data(mWorldState);
+            } else {
+                setDirty(true);
+            }
+        } catch (Exception e){
+            Log.e("RS","CRAAASSHHH", e);
         }
     }
 }
