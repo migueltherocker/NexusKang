@@ -53,9 +53,29 @@
             android:summary="Set the Fourth Color" 
             android:defaultValue="-16777216" />
     </PreferenceCategory>
-     <com.teamdouche.nexuskang.SeekBarPreference  
-                android:key="laserSpeed"
-                android:defaultValue="20"
-                android:title="Laser Speed" />     
+    <PreferenceCategory android:title="Custom Appearance">
+        <com.teamdouche.nexuskang.SpeedSeekBarPreference  
+            android:key="laserSpeed"
+            android:defaultValue="20"
+            android:title="Laser Speed" />  
+        <com.teamdouche.nexuskang.TailSeekBarPreference  
+            android:key="tailSize"
+            android:defaultValue="40"
+            android:title="Tail Length" /> 
+        <com.teamdouche.nexuskang.SizeSeekBarPreference  
+            android:key="laserSize"
+            android:defaultValue="14"
+            android:title="Laser Size" />
+        <com.teamdouche.nexuskang.GlowSeekBarPreference  
+            android:key="glowSize"
+            android:defaultValue="32"
+            android:title="Glow Size" />      
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Miscellaneous">
+        <Preference
+            android:key="rDefault"
+            android:title="Reset Settings"
+            android:summary = "Return to default laser settings"/>
+    </PreferenceCategory>  
     
 </PreferenceScreen>

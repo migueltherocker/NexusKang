@@ -18,6 +18,8 @@ package com.teamdouche.nexuskang.nexus;
 
 import com.teamdouche.nexuskang.R;
 
+import 	android.content.ComponentName;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -28,6 +30,7 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.service.wallpaper.WallpaperSettingsActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.lang.Integer;
 
@@ -40,6 +43,9 @@ public class NexusSettings extends WallpaperSettingsActivity
 	private static final String COLOR1_PREF = "color1";
 	private static final String COLOR2_PREF = "color2";
 	private static final String COLOR3_PREF = "color3";
+  //  private static final String SWEEPERS_PREF = "pref_sweepers";
+
+  //  private CheckBoxPreference mSweepersPref;
     
     @Override
 	protected void onCreate(Bundle icicle) {
@@ -47,8 +53,13 @@ public class NexusSettings extends WallpaperSettingsActivity
 		getPreferenceManager().setSharedPreferencesName(
 				NexusWallpaper.SHARED_PREFS_NAME);
 		addPreferencesFromResource(R.xml.nexus_prefs);
+
 		final PreferenceGroup parentPreference = getPreferenceScreen();
+
 		parentPreference.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
+  //      mSweepersPref = (CheckBoxPreference) getPreferenceManager().findPreference(SWEEPERS_PREF);
+  //      mSweepersPref.setChecked(getPreferenceManager().getSharedPreferences().getInt(SWEEPERS_PREF,0)==1);
 	}
 
 	protected void onResume() {
@@ -81,22 +92,63 @@ public class NexusSettings extends WallpaperSettingsActivity
 		}
     }
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        int value;
         if (preference.getKey().equals("custom_colors0")) {
             int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR0_PREF, "#333333"));
             new UberColorPickerDialog(this, mColor0Listener, i, false).show();
+            return true;
         }
         else if (preference.getKey().equals("custom_colors1")) {
             int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR1_PREF, "#333333"));
             new UberColorPickerDialog(this, mColor1Listener, i, false).show();
+            return true;
         }
         else if (preference.getKey().equals("custom_colors2")) {
             int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR2_PREF, "#333333"));
             new UberColorPickerDialog(this, mColor2Listener, i, false).show();
+            return true;        
         }
         else if (preference.getKey().equals("custom_colors3")) {
             int i = Color.parseColor(getPreferenceManager().getSharedPreferences().getString(COLOR3_PREF, "#333333"));
             new UberColorPickerDialog(this, mColor3Listener, i, false).show();
+            return true;
+        } 
+        else if (preference.getKey().equals("rDefault")) {  
+            final Resources res = this.getResources();
+			final String[] colorscheme = res.getStringArray(res.getIdentifier("nexus_colorscheme_" + 
+				getPreferenceManager().getSharedPreferences().getString(COLORSCHEME_PREF, "softblues"), "array", "com.teamdouche.nexuskang"));
+
+			SharedPreferences.Editor editor = getPreferenceManager().getSharedPreferences().edit();
+            editor.putString(COLORSCHEME_PREF, "softblues");
+            editor.putString("nexus_background", "droid");
+			editor.putString(COLOR0_PREF, colorscheme[0]);
+			editor.putString(COLOR1_PREF, colorscheme[1]);
+			editor.putString(COLOR2_PREF, colorscheme[2]);
+			editor.putString(COLOR3_PREF, colorscheme[3]);
+            editor.putInt("laserSpeed", 20);
+            editor.putInt("laserSize", 1);
+            editor.putInt("glowSize", 32);
+            editor.putInt("tailSize", 40);
+			editor.commit();
+
+            finish();
+            ComponentName comp = new ComponentName(this.getPackageName(),
+            getClass().getName());
+            startActivity(new Intent().setComponent(comp));
+            Toast.makeText(getApplicationContext(), "Settings reset", Toast.LENGTH_SHORT).show();
+            
+            return true;
         }
+            
+      //  else if (preference.getKey().equals("pref_sweepers")) {
+       //     if (mSweepersPref.isChecked()) {
+        //        value = 1;
+         //   } else {
+          //      value = 0;
+           // }
+           // getPreferenceManager().getSharedPreferences().edit().putInt(SWEEPERS_PREF, 1).commit();
+            //return true;
+       // }
         return false;
 	}
     UberColorPickerDialog.OnColorChangedListener mColor0Listener =

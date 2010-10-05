@@ -14,26 +14,26 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class SeekBarPreference extends Preference 
+public class GlowSeekBarPreference extends Preference 
                           implements OnSeekBarChangeListener{
 
  
- public static int maximum    = 50;
+ public static int maximum    = 200;
  public static int interval   = 1;
  
- private float oldValue = 50;
+ private float oldValue = 32;
  private TextView monitorBox;
  
  
- public SeekBarPreference(Context context) {
+ public GlowSeekBarPreference(Context context) {
   super(context);
  }
  
- public SeekBarPreference(Context context, AttributeSet attrs) {
+ public GlowSeekBarPreference(Context context, AttributeSet attrs) {
   super(context, attrs);
  }
  
- public SeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
+ public GlowSeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
   super(context, attrs, defStyle);
  }
    
@@ -50,18 +50,18 @@ public class SeekBarPreference extends Preference
    
    
    LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
-                                        150,
+                                        235,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
-   params2.gravity = Gravity.RIGHT;
+   params2.gravity = Gravity.LEFT;
   
    
    LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(
-                                       50,
+                                       40,
                                        LinearLayout.LayoutParams.WRAP_CONTENT);
    params3.gravity = Gravity.CENTER;
    
    
-   layout.setPadding(15, 5, 10, 5);
+   layout.setPadding(15, 15, 10, 15);
    layout.setOrientation(LinearLayout.HORIZONTAL);
    
    TextView view = new TextView(getContext());
@@ -82,7 +82,7 @@ public class SeekBarPreference extends Preference
    this.monitorBox.setTextSize(12);
    this.monitorBox.setTypeface(Typeface.MONOSPACE, Typeface.ITALIC);
    this.monitorBox.setLayoutParams(params3);
-   this.monitorBox.setPadding(2, 5, 0, 0);
+   this.monitorBox.setPadding(5, 5, 0, 0);
    this.monitorBox.setText(bar.getProgress()+"");
    
    

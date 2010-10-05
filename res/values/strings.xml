@@ -32,7 +32,15 @@
     <string name="wallpaper_nexus_desc">
         A peek inside TDs neural network
     </string>
+
     
+     <!-- Wallpaper showing nexus -->
+    <string name="wallpaper_darknexus">DarkNexus</string>
+    <string name="wallpaper_darknexus_author">Chris Soyars</string>
+    <string name="wallpaper_darknexus_desc">
+        A peek inside the dark neural network.
+    </string>    
+
     <string name="nexus_settings">Nexus wallpaper settings</string>
     <string name="nexus_colorscheme">Color Scheme</string>
     <string name="nexus_background">Background</string>    

@@ -264,6 +264,7 @@ class NexusRS extends RenderScriptScene implements
         public int mode;
         
         public float speed;
+ 
     }
 
     static class CommandState {
@@ -272,6 +273,8 @@ class NexusRS extends RenderScriptScene implements
         public int y;
 
         public int command;
+
+        public int pSize, hGlowSize, tailSize;
     }
 
     private void makeNewState() {
@@ -280,7 +283,7 @@ class NexusRS extends RenderScriptScene implements
         mWorldState.rotate = mWidth > mHeight ? 1 : 0;
         mWorldState.isPreview = isPreview() ? 1 : 0;
 
-        mWorldState.speed = .01f * mPrefs.getInt("laserSpeed",20);
+        
 
         mWorldState.color0r = mPreset.color0r;
         mWorldState.color0g = mPreset.color0g;
@@ -294,9 +297,21 @@ class NexusRS extends RenderScriptScene implements
         mWorldState.color3r = mPreset.color3r;
         mWorldState.color3g = mPreset.color3g;
         mWorldState.color3b = mPreset.color3b;
+
+    // custom states
+        mWorldState.speed = .01f * mPrefs.getInt("laserSpeed", 20);
+        mCommand.pSize = 14 * mPrefs.getInt("laserSize", 1);
+        mCommand.hGlowSize = mPrefs.getInt("glowSize", 32);
+        mCommand.tailSize = mPrefs.getInt("tailSize", 40);
+      //  mCommand.mSweep = mPrefs.getInt("pref_sweepers",0);
+
+      //  mWorldState.pSize = 30;
+
+       // mWorldState.rectglow = 1;
     }
 
     private void createState() {
+        mCommand = new CommandState();
         mWorldState = new WorldState();
         mWorldState.mode = 0; // standard nexus mode
         makeNewState();
@@ -305,11 +320,11 @@ class NexusRS extends RenderScriptScene implements
         mState = Allocation.createTyped(mRS, mStateType);
         mState.data(mWorldState);
 
-        mCommand = new CommandState();
         mCommand.x = -1;
         mCommand.y = -1;
-        mCommand.command = 0;
 
+        mCommand.command = 0;
+        
         mCommandType = Type.createFromClass(mRS, CommandState.class, 1, "DropState");
         mCommandAllocation = Allocation.createTyped(mRS, mCommandType);
         mCommandAllocation.data(mCommand);
@@ -445,7 +460,8 @@ class NexusRS extends RenderScriptScene implements
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         try {
-            if (!key.equals("nexus_background")) {
+            if (!(key.equals("nexus_background")||key.equals("laserSize")||key.equals("glowSize")
+              ||key.equals("tailSize"))) {
                 mPreset = buildColors();
                 makeNewState();
                 mState.data(mWorldState);
