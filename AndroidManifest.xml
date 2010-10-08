@@ -20,8 +20,8 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.teamdouche.nexuskang"
-    android:versionCode="155"
-    android:versionName="1.5.5">
+    android:versionCode="160"
+    android:versionName="1.6.0">
 
     <original-package android:name="com.teamdouche.nexuskang" />
 

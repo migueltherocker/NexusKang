@@ -275,6 +275,8 @@ class NexusRS extends RenderScriptScene implements
         public int command;
 
         public int pSize, hGlowSize, tailSize;
+        
+        public float sVariance;
     }
 
     private void makeNewState() {
@@ -303,6 +305,7 @@ class NexusRS extends RenderScriptScene implements
         mCommand.pSize = 14 * mPrefs.getInt("laserSize", 1);
         mCommand.hGlowSize = mPrefs.getInt("glowSize", 32);
         mCommand.tailSize = mPrefs.getInt("tailSize", 40);
+        mCommand.sVariance = 0.1f * mPrefs.getInt("speedVariance", 30);
       //  mCommand.mSweep = mPrefs.getInt("pref_sweepers",0);
 
       //  mWorldState.pSize = 30;
@@ -461,7 +464,7 @@ class NexusRS extends RenderScriptScene implements
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         try {
             if (!(key.equals("nexus_background")||key.equals("laserSize")||key.equals("glowSize")
-              ||key.equals("tailSize"))) {
+              ||key.equals("tailSize")||key.equals("speedVariance"))) {
                 mPreset = buildColors();
                 makeNewState();
                 mState.data(mWorldState);

@@ -14,26 +14,26 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class GlowSeekBarPreference extends Preference 
+public class SpeedVarSeekBarPreference extends Preference 
                           implements OnSeekBarChangeListener{
 
  
- public static int maximum    = 200;
- public static int interval   = 10;
+ public static int maximum    = 10;
+ public static int interval   = 1;
  
- private float oldValue = 32;
+ private float oldValue = 50;
  private TextView monitorBox;
  
  
- public GlowSeekBarPreference(Context context) {
+ public SpeedVarSeekBarPreference(Context context) {
   super(context);
  }
  
- public GlowSeekBarPreference(Context context, AttributeSet attrs) {
+ public SpeedVarSeekBarPreference(Context context, AttributeSet attrs) {
   super(context, attrs);
  }
  
- public GlowSeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
+ public SpeedVarSeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
   super(context, attrs, defStyle);
  }
    

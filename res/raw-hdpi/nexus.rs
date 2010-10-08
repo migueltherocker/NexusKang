@@ -23,7 +23,7 @@
 //define GLOW_SIZE            64 // Size of the leading glow in pixels
 //define HALF_GLOW_SIZE       32
 //define SPEED                0.8f // (200 / 1000) Pixels per ms
-#define SPEED_VARIANCE       0.3f
+//define SPEED_VARIANCE       0.3f
 #define PULSE_NORMAL         0
 #define PULSE_EXTRA          1
 //define TRAIL_SIZE           40 // Number of cells in a trail
@@ -61,6 +61,7 @@ void setColor(int c) {
 
 void initPulse(struct pulse_s * pulse, int pulseType) {
     int PULSE_SIZE = Command->pSize;
+    float SPEED_VARIANCE = Command->sVariance;
     if (randf(1) > 0.5f) {
         pulse->originX = (int)randf(State->width * 2 / PULSE_SIZE) * PULSE_SIZE;
         pulse->dx = 0;

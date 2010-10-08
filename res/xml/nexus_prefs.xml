@@ -57,7 +57,11 @@
         <com.teamdouche.nexuskang.SpeedSeekBarPreference  
             android:key="laserSpeed"
             android:defaultValue="20"
-            android:title="Laser Speed" />  
+            android:title="Laser Speed" />
+        <com.teamdouche.nexuskang.SpeedVarSeekBarPreference  
+            android:key="speedVariance"
+            android:defaultValue="3"
+            android:title="Speed Var" /> 
         <com.teamdouche.nexuskang.TailSeekBarPreference  
             android:key="tailSize"
             android:defaultValue="40"
